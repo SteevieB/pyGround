@@ -29,7 +29,7 @@ for i in range(10):
 x = 0
 y = 0
 speed = 1
-fps = 60
+fps = 10
 
 
 def detectKeys():
@@ -53,11 +53,14 @@ while go:
             go = False
             sys.exit()
 
+    x_a = x
+    y_a = y
     detectKeys()
 
     screen.fill(rgbBlack)
 
-    bs.getBook(x,y).setColor(rgbSelected)
+    bs.getBook(x_a,y_a).toggleHighlight()
+    bs.getBook(x,y).toggleHighlight()
     bs.drawSelf(screen)
     bs.drawBooks(screen)
 

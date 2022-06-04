@@ -16,7 +16,7 @@ rgbYellow = (255, 255, 0)
 rgbGray = (128, 128, 128)
 rgbBlack = (0,  0,  0)
 rgbWhite = (255, 255, 255)
-rgbSelected = (255, 255, 255)
+rgbSelected = rgbRed
 
 
 class Book:
@@ -70,6 +70,13 @@ class Book:
 
     def setColor(self, rgb):
         self.clr = rgb
+
+    def toggleHighlight(self):
+        if self.clr == rgbSelected:
+            self.clr = self.clr_a
+        else:
+            self.clr_a = self.clr
+            self.clr = rgbSelected
 
     def getRandomRGB(self):
         return (random.randrange(0, 256), random.randrange(0, 256), random.randrange(0, 256))
