@@ -16,6 +16,7 @@ rgbYellow = (255, 255, 0)
 rgbGray = (128, 128, 128)
 rgbBlack = (0,  0,  0)
 rgbWhite = (255, 255, 255)
+rgbSelected = (255, 255, 255)
 
 
 class Book:

@@ -36,6 +36,11 @@ class Bookshelf:
             nFreeSpots += shelf.count(False)
         return nFreeSpots
 
+    def getBook(self,x,y):
+    	x = x % self.nCols
+    	y = y % self.nRows
+    	return self.bookList[y*self.nCols+x]
+
     def insertBook(self, book):
         if self.getFreeSpots() > 0:
             print(self.getFreeSpots() + " spots left in bookshelf.")
@@ -47,9 +52,9 @@ class Bookshelf:
         pygame.draw.rect(screen, rgbBrown,
                          (10, 10, self.boardThickness, self.boardLength))
         pygame.draw.rect(screen, rgbBrown,
-                         (10, 10, self.boardLength,   self.boardThickness))
+                         (10, 10, self.boardLength, self.boardThickness))
         pygame.draw.rect(screen, rgbBrown,
-                         (10, 256, self.boardLength,   self.boardThickness))
+                         (10, 256, self.boardLength, self.boardThickness))
         pygame.draw.rect(screen, rgbBrown,
                          (266, 10, self.boardThickness, self.boardLength))
 

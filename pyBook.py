@@ -10,7 +10,9 @@ if platform.system() == "Darwin":
     sys.path.append("/opt/homebrew/lib/python3.9/site-packages/")
 
 pygame.init()
-screen = pygame.display.set_mode([800, 600])
+SCREENWIDTH  = 800
+SCREENHEIGHT = 600
+screen = pygame.display.set_mode([SCREENWIDTH, SCREENHEIGHT])
 clock = pygame.time.Clock()
 
 b1 = Book("The Hound of the Baskervilles", "Arthur Conan Doyle")
@@ -44,19 +46,22 @@ def detectKeys():
     if pressed[pygame.K_LEFT]:
         x -= speed
 
-
 go = True
 while go:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
+            go = False
             sys.exit()
 
     detectKeys()
 
     screen.fill(rgbBlack)
 
+    bs.getBook(x,y).setColor(rgbSelected)
     bs.drawSelf(screen)
     bs.drawBooks(screen)
 
     pygame.display.update()
     clock.tick(fps)
+
+pygame.quit()
