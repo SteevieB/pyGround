@@ -1,0 +1,4 @@
+{
+	"cmd": ["python3", "-u", "$file"],
+    "file_regex": "^[]*File \"(...*?)\", line ([0-9]*)"
+}
