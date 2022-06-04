@@ -2,7 +2,10 @@ import pygame
 import sys
 import random
 from book import *
-sys.path.append("/opt/homebrew/lib/python3.9/site-packages/")
+import platform
+
+if platform.system() == "Darwin":
+    sys.path.append("/opt/homebrew/lib/python3.9/site-packages/")
 
 
 class Bookshelf:

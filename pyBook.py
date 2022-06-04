@@ -3,8 +3,11 @@ import sys
 
 from book import *
 from bookShelf import Bookshelf
+import platform
+print("Running on: " + platform.system())
 
-sys.path.append("/opt/homebrew/lib/python3.9/site-packages/")
+if platform.system() == "Darwin":
+    sys.path.append("/opt/homebrew/lib/python3.9/site-packages/")
 
 pygame.init()
 screen = pygame.display.set_mode([800, 600])

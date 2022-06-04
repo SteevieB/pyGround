@@ -1,7 +1,10 @@
 import pygame
 import random
 import sys
-sys.path.append("/opt/homebrew/lib/python3.9/site-packages/")
+import platform
+
+if platform.system() == "Darwin":
+    sys.path.append("/opt/homebrew/lib/python3.9/site-packages/")
 
 rgbBrown = (139, 69, 19)
 rgbSilk = (255, 248, 220)
