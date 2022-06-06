@@ -10,7 +10,7 @@ if platform.system() == "Darwin":
     sys.path.append("/opt/homebrew/lib/python3.9/site-packages/")
 
 pygame.init()
-SCREENWIDTH  = 800
+SCREENWIDTH = 800
 SCREENHEIGHT = 600
 screen = pygame.display.set_mode([SCREENWIDTH, SCREENHEIGHT])
 clock = pygame.time.Clock()
@@ -32,6 +32,25 @@ speed = 1
 fps = 10
 
 
+def interact():
+    global x
+    global y
+    global bs
+    bs.getBook(x, y).getDetails()
+    print("Do you want to edit this book?(Y/N)")
+    waitForInput = True
+    while waitForInput:
+        event = pygame.event.wait()
+        if event.type == pygame.KEYDOWN or event.type == pygame.KEYUP:
+            if event.key == pygame.K_y:
+                title = input('Title:')
+                print(title)
+                waitForInput = False
+            if event.key == pygame.K_n:
+                print('NO')
+                waitForInput = False
+
+
 def detectKeys():
     global x
     global y
@@ -45,6 +64,9 @@ def detectKeys():
         y += speed
     if pressed[pygame.K_LEFT]:
         x -= speed
+    if pressed[pygame.K_SPACE]:
+        interact()
+
 
 go = True
 while go:
@@ -59,8 +81,8 @@ while go:
 
     screen.fill(rgbBlack)
 
-    bs.getBook(x_a,y_a).toggleHighlight()
-    bs.getBook(x,y).toggleHighlight()
+    bs.getBook(x_a, y_a).toggleHighlight()
+    bs.getBook(x, y).toggleHighlight()
     bs.drawSelf(screen)
     bs.drawBooks(screen)
 

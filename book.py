@@ -34,12 +34,13 @@ class Book:
     def __init__(self, title="There and back again", author="Bilbo Baggins"):
         self.title = title
         self.author = author
+        self.genre = "Generic"
         self.clr = rgbSilk
 
     def getDetails(self):
         print(self.title + " by " + self.author + " -> " + self.genre)
-        print("\tis stored in Row " + str(self.row) +
-              " and Spot " + str(self.col))
+        print("\tis stored in Row " + str(self.row+1) +
+              " and Spot " + str(self.col+1))
 
     def getDimensions(self):
         return (self.x, self.y, self.width, self.height)
@@ -68,8 +69,14 @@ class Book:
     def setGenre(self, genre):
         self.genre = genre
 
+    def getGenre(self):
+        return self.genre
+
     def setColor(self, rgb):
-        self.clr = rgb
+        if rgb == "r":
+            self.clr = self.getRandomRGB()
+        else:
+            self.clr = rgb
 
     def toggleHighlight(self):
         if self.clr == rgbSelected:

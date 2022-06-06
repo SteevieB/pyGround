@@ -31,19 +31,27 @@ class Bookshelf:
                 cntr += 1
 
     def getFreeSpots(self):
-        nFreeSpots = 0
-        for shelf in bookList:
-            nFreeSpots += shelf.count(False)
-        return nFreeSpots
+        spots = 0
+        for book in self.bookList:
+            if book.getGenre() == "Generic":
+                spots += 1
+        return spots
 
-    def getBook(self,x,y):
-    	x = x % self.nCols
-    	y = y % self.nRows
-    	return self.bookList[y*self.nCols+x]
+    def getBook(self, x, y):
+        x = x % self.nCols
+        y = y % self.nRows
+        return self.bookList[y*self.nCols+x]
 
     def insertBook(self, book):
         if self.getFreeSpots() > 0:
-            print(self.getFreeSpots() + " spots left in bookshelf.")
+            rand = random.randrange(0, len(self.bookList))
+            while (self.bookList[rand].getGenre() != "Generic"):
+                rand = random.randrange(0, len(self.bookList))
+
+            self.bookList[rand] = book
+            self.bookList[rand].setColor("r")
+
+            print((self.getFreeSpots()-1) + " spots left in bookshelf.")
 
         else:
             print("Sorry your bookshelf is full!")
